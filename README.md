@@ -2,6 +2,13 @@
 
 Mi fábrica personal de **skills, agentes, comandos, hooks y plantillas** para Claude Code (y Claude.ai), reutilizable en todos los repos en los que trabajo.
 
+Este repo es un *marketplace* con dos plugins independientes:
+
+| Plugin | Carpeta | Qué es |
+|---|---|---|
+| `myfactory` | raíz | Utilidades de trabajo diario (este README) |
+| `spec-flow` | [`spec-flow/`](spec-flow/) | Flujo spec → plan → convergencia → ejecución ([ver su README](spec-flow/README.md)) |
+
 ## Qué incluye
 
 | Tipo | Nombre | Para qué |
@@ -27,16 +34,19 @@ Mi fábrica personal de **skills, agentes, comandos, hooks y plantillas** para C
 ### Opción A — Plugin de Claude Code (recomendada)
 
 ```text
-/plugin marketplace add Asieribarz/myfactory
-/plugin install myfactory@myfactory
+/plugin marketplace add <tu-usuario>/myfactory
+/plugin install myfactory@myfactory   # utilidades
+/plugin install spec-flow@myfactory   # flujo spec-driven
 ```
+
+Puedes instalar uno, otro o los dos.
 
 Actualizar tras hacer cambios en el repo: `/plugin marketplace update myfactory`.
 
 ### Opción B — Copiar skills a mano
 
 ```bash
-git clone https://github.com/Asieribarz/myfactory.git ~/myfactory
+git clone https://github.com/<tu-usuario>/myfactory.git ~/myfactory
 ~/myfactory/scripts/install.sh --link            # global en ~/.claude (symlinks, se actualiza con git pull)
 ~/myfactory/scripts/install.sh /ruta/a/mi-repo   # solo para un repo concreto
 ```
@@ -75,7 +85,8 @@ Consejo: la `description` es lo que decide cuándo se activa la skill. Incluye q
 
 ```
 myfactory/
-├── .claude-plugin/        # marketplace.json + plugin.json
+├── .claude-plugin/        # marketplace.json (lista los 2 plugins) + plugin.json
+├── spec-flow/             # plugin spec-flow, autocontenido
 ├── skills/<nombre>/SKILL.md
 ├── agents/                # subagentes
 ├── commands/              # slash commands

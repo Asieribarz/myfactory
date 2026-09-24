@@ -6,7 +6,7 @@ import sys
 
 root = pathlib.Path(__file__).resolve().parent.parent
 errors = []
-for skill in sorted((root / "skills").glob("*/SKILL.md")):
+for skill in sorted(root.glob("**/skills/*/SKILL.md")):
     text = skill.read_text(encoding="utf-8")
     m = re.match(r"^---\n(.*?)\n---\n", text, re.S)
     if not m:
